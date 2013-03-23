@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd" version="2.0">
+	<channel>
+		{{channel.title}}
+	</channel>
+	<description>
+		{{channel.description}}
+	</description>
+	<link>
+		{{channel.link}}
+	</link>
+	<copyright>
+		{{channel.copyright}}
+	</copyright>
+	<webmaster>
+		{{channel.webmaster}}
+	</webmaster>
+	<itunes:image href="{{channel.itunes_image}}"/>
+	<itunes:author>
+		{{channel.itunes_author}}
+	</itunes:author>
+	<itunes:owner>
+		<itunes:name>
+			{{channel.itunes_owner_name}}
+		</itunes:name>
+		<itunes:email>
+			{{channel.itunes_owner_email}}
+		</itunes:email>
+	</itunes:owner>
+	<itunes:explicit>Yes</itunes:explicit>
+	<itunes:category text="{{channel_category}}"/>
+	<itunes:subtitle>
+		{{channel.subtitle}}
+	</itunes:subtitle>
+	<itunes:summary>
+		{{channel.summary}}
+	</itunes:summary>
+	<language>
+		en-us
+	</language>
+	{% for episode in channel.episode_set.all %}
+		<item>
+			<title>
+				{{episode.title}}
+			</title>
+			<link>
+				{{episode.link}}
+			</link>
+			<description>
+				{{episode.description}}
+			</description>
+			<enclosure url="{{episode.enclosure_url}}" length="{{episode.enclosure_length" type="audio/mpeg"/>
+			<guid>
+				{{episode.guid}}
+			</guid>
+			<pubDate>
+				{{episode.pub_date}}
+			</pubDate>
+			<itunes:author>
+				{{episode.itunes_author}}
+			</itunes:author>
+			<itunes:keywords>
+				{{episode.itunes_keywords}}
+			</itunes:keywords>
+			<itunes:image href="{{episode.itunes_image}}"/> 
+		</item>
+	{% endfor %}
+</channel>
+</rss>
